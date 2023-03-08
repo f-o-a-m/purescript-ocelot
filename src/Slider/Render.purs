@@ -61,7 +61,7 @@ axisLabel ::
   Halogen.HTML.HTML p a
 axisLabel label x =
   Halogen.Svg.Elements.text
-    [ Halogen.Svg.Attributes.text_anchor Halogen.Svg.Attributes.AnchorMiddle
+    [ Halogen.Svg.Attributes.textAnchor Halogen.Svg.Attributes.AnchorMiddle
     , Halogen.Svg.Attributes.transform
         [ Halogen.Svg.Attributes.Translate x 0.0 ]
     ]
