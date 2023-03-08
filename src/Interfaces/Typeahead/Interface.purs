@@ -10,7 +10,6 @@ import Data.Array (head)
 import Data.Fuzzy (Fuzzy(..), match)
 import Data.Int (toNumber)
 import Data.Maybe (Maybe(..), fromJust, fromMaybe)
-import Data.Symbol (SProxy(..))
 import Data.Time.Duration (Milliseconds(..))
 import Data.Unfoldable as Uf
 import Data.Variant (Variant, inj)
@@ -33,6 +32,7 @@ import Ocelot.Interface.Utilities (Interface, mkSubscription)
 import Ocelot.Typeahead (Component, Input, Insertable(..), Output(..), Query(..), component, defFilterFuzzy, defRenderContainer, multi, renderHeaderSearchDropdown, renderMulti, renderSearchDropdown, renderSingle, renderToolbarSearchDropdown, single)
 import Partial.Unsafe (unsafePartial)
 import Prim.TypeError (class Warn, Text)
+import Type.Proxy (Proxy(..))
 import Web.HTML (HTMLElement)
 
 -- | A subset of the queries available to the typeahead, restricted
@@ -57,18 +57,18 @@ type MessageVariant = Variant
 
 convertMultiToMessageVariant :: forall action. Output action Array (Object String) -> MessageVariant
 convertMultiToMessageVariant = case _ of
-  Searched str -> inj (SProxy :: SProxy "searched") str
-  Selected obj -> inj (SProxy :: SProxy "selected") obj
-  SelectionChanged _ arr -> inj (SProxy :: SProxy "selectionChanged") arr
-  Emit _ -> inj (SProxy :: SProxy "emit") "emitted"
+  Searched str -> inj (Proxy :: Proxy "searched") str
+  Selected obj -> inj (Proxy :: Proxy "selected") obj
+  SelectionChanged _ arr -> inj (Proxy :: Proxy "selectionChanged") arr
+  Emit _ -> inj (Proxy :: Proxy "emit") "emitted"
 
 convertSingleToMessageVariant :: forall action. Output action Maybe (Object String) -> MessageVariant
 convertSingleToMessageVariant = case _ of
-  Searched str -> inj (SProxy :: SProxy "searched") str
-  Selected obj -> inj (SProxy :: SProxy "selected") obj
-  SelectionChanged _ (Just i) -> inj (SProxy :: SProxy "selectionChanged") [ i ]
-  SelectionChanged _ Nothing -> inj (SProxy :: SProxy "selectionChanged") []
-  Emit _ -> inj (SProxy :: SProxy "emit") "emitted"
+  Searched str -> inj (Proxy :: Proxy "searched") str
+  Selected obj -> inj (Proxy :: Proxy "selected") obj
+  SelectionChanged _ (Just i) -> inj (Proxy :: Proxy "selectionChanged") [ i ]
+  SelectionChanged _ Nothing -> inj (Proxy :: Proxy "selectionChanged") []
+  Emit _ -> inj (Proxy :: Proxy "emit") "emitted"
 
 -- | A subset of the input available to the typeahead
 -- | Provide:

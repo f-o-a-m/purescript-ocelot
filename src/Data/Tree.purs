@@ -8,7 +8,7 @@ import Data.Lens (Lens')
 import Data.Lens.Iso.Newtype (_Newtype)
 import Data.Lens.Record (prop)
 import Data.Newtype (class Newtype, unwrap)
-import Data.Symbol (SProxy(..))
+import Type.Proxy (Proxy(..))
 
 newtype Node a = Node
   { value :: a
@@ -34,10 +34,10 @@ type ItemPath a = Array a
 type IndexPath = Array Int
 
 _selected :: forall a. Lens' (Node a) Boolean
-_selected = _Newtype <<< prop (SProxy :: SProxy "selected")
+_selected = _Newtype <<< prop (Proxy :: Proxy "selected")
 
 _expanded :: forall a. Lens' (Node a) Boolean
-_expanded = _Newtype <<< prop (SProxy :: SProxy "expanded")
+_expanded = _Newtype <<< prop (Proxy :: Proxy "expanded")
 
 _children :: forall a. Lens' (Node a) (Array (Node a))
-_children = _Newtype <<< prop (SProxy :: SProxy "children")
+_children = _Newtype <<< prop (Proxy :: Proxy "children")

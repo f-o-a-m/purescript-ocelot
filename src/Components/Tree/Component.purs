@@ -8,7 +8,6 @@ import Data.Lens.Index (ix) as Lens
 import Data.Lens.Record (prop)
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.Newtype (unwrap)
-import Data.Symbol (SProxy(..))
 import Data.Traversable (traverse_)
 import Data.Tuple (Tuple(..), fst)
 import Effect.Aff.Class (class MonadAff)
@@ -21,6 +20,7 @@ import Ocelot.Block.Conditional as Conditional
 import Ocelot.Block.Icon as Icon
 import Ocelot.Data.Tree (IndexPath, ItemPath, Node(..), _children, _expanded, _selected)
 import Ocelot.HTML.Properties (css)
+import Type.Proxy (Proxy(..))
 
 type ComponentM item m =
   H.HalogenM (State item) (Action item) () (Message item) m
@@ -175,7 +175,7 @@ toggleSingle itemPath checked = do
 -- Helper functions for expanding paths, toggling checkboxes, etc.
 
 _items :: forall item. Lens' (State item) (Array (Node item))
-_items = prop (SProxy :: SProxy "items")
+_items = prop (Proxy :: Proxy "items")
 
 pathToLens ::
   forall p a.

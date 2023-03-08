@@ -5,7 +5,6 @@ import Prelude
 import Control.Promise (Promise, fromAff)
 import Data.Array (head)
 import Data.Maybe (Maybe, fromMaybe)
-import Data.Symbol (SProxy(..))
 import Data.Variant (Variant, inj)
 import Effect.AVar (empty) as AVar
 import Effect.Aff (launchAff_)
@@ -18,6 +17,7 @@ import Ocelot.Button (button)
 import Ocelot.Dropdown (Input, Output(..), Query(..), component, defDropdown)
 import Ocelot.Interface.Utilities (Interface, mkSubscription)
 import Select (Visibility(..)) as Select
+import Type.Proxy (Proxy(..))
 import Web.HTML (HTMLElement)
 
 type QueryRow =
@@ -33,8 +33,8 @@ type MessageVariant = Variant
 
 convertMessageToVariant :: Output (Object String) -> MessageVariant
 convertMessageToVariant = case _ of
-  Selected obj -> inj (SProxy :: SProxy "selected") obj
-  VisibilityChanged vis -> inj (SProxy :: SProxy "visibilityChanged") (vis == Select.On)
+  Selected obj -> inj (Proxy :: Proxy "selected") obj
+  VisibilityChanged vis -> inj (Proxy :: Proxy "visibilityChanged") (vis == Select.On)
 
 type ExternalInput =
   { selectedItem :: Array (Object String)
