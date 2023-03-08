@@ -770,7 +770,7 @@ inputProps disabled iprops =
   where
   iprops' =
     [ Halogen.HTML.Properties.disabled disabled
-    , Halogen.HTML.Properties.autocomplete false
+    , Halogen.HTML.Properties.autocomplete Halogen.HTML.Properties.AutocompleteOff 
     , Ocelot.HTML.Properties.css "focus:next:text-blue-88"
     ]
       <&> iprops
