@@ -657,7 +657,7 @@ renderTrack state =
   Ocelot.Slider.Render.trackContainer state.input.layout
     ( [ Ocelot.Slider.Render.track state.input.layout
           [ Halogen.Svg.Attributes.fill
-              (Just (Halogen.Svg.Attributes.RGB 229 229 229))
+              (Halogen.Svg.Attributes.RGB 229 229 229)
           ]
       , renderMarks state
       ]

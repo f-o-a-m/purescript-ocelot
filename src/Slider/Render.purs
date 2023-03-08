@@ -183,8 +183,8 @@ thumb ::
 thumb { trackWidth, thumbRadius } { percent } iprops =
   Halogen.Svg.Elements.circle
     ( [ Halogen.Svg.Attributes.r thumbRadius
-      , Halogen.Svg.Attributes.fill (pure (Halogen.Svg.Attributes.RGB 255 255 255))
-      , Halogen.Svg.Attributes.stroke (pure (Halogen.Svg.Attributes.RGB 0 0 0))
+      , Halogen.Svg.Attributes.fill (Halogen.Svg.Attributes.RGB 255 255 255)
+      , Halogen.Svg.Attributes.stroke (Halogen.Svg.Attributes.RGB 0 0 0)
       , Halogen.Svg.Attributes.transform
           [ Halogen.Svg.Attributes.Translate (trackWidth * percent / 100.0) 0.0 ]
       ]
